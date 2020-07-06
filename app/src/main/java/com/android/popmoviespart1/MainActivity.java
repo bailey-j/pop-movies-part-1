@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -13,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     //static variable - number of items
     private static final int NUM_LIST_ITEMS = 100;
 
-    private Toast mToast;
+    //private Toast mToast;
 
     //Adapter variable
     private MovieAdapter mAdapter;
@@ -44,15 +45,23 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
     @Override
     public void onMovieListItemClick(int clickedItemIndex) {
-
-        if (mToast != null) {
+        launchDetailActivity(clickedItemIndex);
+        /*if (mToast != null) {
             mToast.cancel();
         }
-
         String toastMessage = "Item #" + clickedItemIndex + " clicked.";
         mToast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
+        mToast.show();*/
+    }
 
-        mToast.show();
+    private void launchDetailActivity(int position) {
+
+        String positionString = Integer.toString(position);
+
+        Intent intent = new Intent(this, MovieDetailsActivity.class);
+        intent.putExtra(MovieDetailsActivity.EXTRA_POSITION, position);
+        intent.putExtra(intent.EXTRA_TEXT, positionString);
+        startActivity(intent);
     }
 
 }

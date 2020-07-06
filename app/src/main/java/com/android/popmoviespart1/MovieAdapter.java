@@ -16,6 +16,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     final private MovieListItemClickListener mOnClickListener;
 
     private int mNumberItems;
+    private static int viewHolderCount;
 
     public interface MovieListItemClickListener {
         void onMovieListItemClick(int clickedItemIndex);
@@ -25,6 +26,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public MovieAdapter(int numberOfItems, MovieListItemClickListener listener) {
         mNumberItems = numberOfItems;
         mOnClickListener = listener;
+        viewHolderCount = 0;
     }
 
     //OnBindViewHolder displays the data at the specified position
@@ -62,13 +64,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         // Will display the position in the list, ie 0 through getItemCount() - 1
         TextView movieListView;
 
-        /**
-         * Constructor for our ViewHolder. Within this constructor, we get a reference to our
-         * TextViews and set an onClickListener to listen for clicks. Those will be handled in the
-         * onClick method below.
-         * @param itemView The View that you inflated in
-         *                 {@link MovieAdapter#onCreateViewHolder(ViewGroup, int)}
-         */
+        //Constructor for our ViewHolder.
         public MovieViewHolder(View itemView) {
             super(itemView);
 
