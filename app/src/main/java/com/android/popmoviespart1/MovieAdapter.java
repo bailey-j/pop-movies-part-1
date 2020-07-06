@@ -13,12 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
     private static final String TAG = MovieAdapter.class.getSimpleName();
+    final private MovieListItemClickListener mOnClickListener;
 
     private int mNumberItems;
 
+    public interface MovieListItemClickListener {
+        void onMovieListItemClick(int clickedItemIndex);
+    }
+
     // MovieAdapter Constructor
-    public MovieAdapter(int numberOfItems) {
+    public MovieAdapter(int numberOfItems, MovieListItemClickListener listener) {
         mNumberItems = numberOfItems;
+        mOnClickListener = listener;
     }
 
     //OnBindViewHolder displays the data at the specified position
@@ -44,11 +50,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
         MovieViewHolder viewHolder = new MovieViewHolder(view);
 
+        int height = viewGroup.getMeasuredHeight() / 4;
+        view.setMinimumHeight(height);
+
         return viewHolder;
     }
 
     //Cache of the children views for a list item.
-    class MovieViewHolder extends RecyclerView.ViewHolder {
+    class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         // Will display the position in the list, ie 0 through getItemCount() - 1
         TextView movieListView;
@@ -65,11 +74,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
             //movieListView = (ImageView) itemView.findViewById(R.id.iv_movie);
             movieListView = (TextView) itemView.findViewById(R.id.tv_movie);
+            itemView.setOnClickListener(this);
         }
 
         void bind(int listIndex) {
             //movieListView.setImageResource(listIndex);
             movieListView.setText(String.valueOf(listIndex));
+        }
+
+        @Override
+        public void onClick(View view) {
+            int clickedPosition = getAdapterPosition();
+            mOnClickListener.onMovieListItemClick(clickedPosition);
         }
     }
 

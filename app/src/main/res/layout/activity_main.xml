@@ -10,7 +10,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_movies"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layout_column="0"
             app:layout_row="0">
 
