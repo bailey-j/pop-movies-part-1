@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         mMoviesList = (RecyclerView) findViewById(R.id.rv_movies);
 
         //We want our movies to display in grid layout
-        GridLayoutManager layoutManager = new GridLayoutManager(this,4, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager layoutManager = new GridLayoutManager(this,3, GridLayoutManager.VERTICAL, false);
         mMoviesList.setLayoutManager(layoutManager);
 
         //Keep individual items the same/original size

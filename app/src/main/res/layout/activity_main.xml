@@ -7,13 +7,31 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_movies"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_column="0"
-            app:layout_row="0">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-        </androidx.recyclerview.widget.RecyclerView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_movies"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_column="0"
+                            app:layout_row="0">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="attribution"
+                            android:src="@drawable/ic_blue_long_1_tmdb" />
+                </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
 </FrameLayout>
