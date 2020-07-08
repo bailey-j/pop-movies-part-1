@@ -7,6 +7,25 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:layout_marginBottom="24dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+ <!--               <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>-->
+                <Spinner
+                    android:id="@+id/spinner_sort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:dropDownWidth="match_parent" />
+        </androidx.appcompat.widget.Toolbar>
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,6 +48,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:padding="16dp"
                             android:contentDescription="attribution"
                             android:src="@drawable/ic_blue_long_1_tmdb" />
                 </LinearLayout>

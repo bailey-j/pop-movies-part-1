@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">Pop Movies Part 1</string>
+    <string name="app_name">Popular Movies v1</string>
     <string name="action_sort">Sort</string>
+
+    <string-array name="api_query">
+        <item>Most Popular</item>
+        <item>Top Rated</item>
+    </string-array>
 </resources>
