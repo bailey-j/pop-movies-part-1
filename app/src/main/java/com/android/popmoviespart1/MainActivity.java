@@ -10,8 +10,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.popmoviespart1.utils.NetworkUtils;
 
@@ -20,10 +25,14 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity implements MovieAdapter.MovieListItemClickListener{
 
+    private String state = "Top Rated";
+    //private EditText search;
+    private TextView result;
+    private Button button;
+    private Spinner spinner;
+
     //static variable - number of items
     private static final int NUM_LIST_ITEMS = 100;
-
-    //private Toast mToast;
 
     //Adapter variable
     private MovieAdapter mAdapter;
@@ -34,6 +43,10 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        button = findViewById(R.id.action_search);
+        result = findViewById(R.id.tv_url_display);
+        spinner = findViewById(R.id.action_sort);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         myToolbar.setTitle(R.string.app_name);
@@ -64,6 +77,22 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
         //makeImageRequest();
 
+
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                makeTopApiQuery();
+            }
+        });
+    }
+
+    private void makeTopApiQuery() {
+        URL topRatedUrl = NetworkUtils.buildTopUrl();
+        result.setText(topRatedUrl.toString());
+    }
+
+    private void makePopApiQuery() {
+        URL mostPopUrl = NetworkUtils.buildPopUrl();
+        result.setText(mostPopUrl.toString());
     }
 
     @Override
@@ -79,13 +108,14 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         startActivity(intent);
     }
 
-    @Override
+ /*   @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.details, menu);
-        MenuItem menuItem = menu.findItem(R.id.action_sort);
+        //MenuItem menuItem = menu.findItem(R.id.action_sort);
         return true;
-    }
-    @Override
+    }*/
+
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemThatWasClickedId = item.getItemId();
         if (itemThatWasClickedId == R.id.action_sort) {
@@ -95,6 +125,6 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
 }

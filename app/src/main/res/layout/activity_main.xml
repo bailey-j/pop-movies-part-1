@@ -16,14 +16,17 @@
             android:layout_marginBottom="24dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
- <!--               <TextView
+                <Button
+                    android:id="@+id/action_search"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"/>-->
+                    android:layout_height="wrap_content"
+                    android:text="@string/search"/>
                 <Spinner
                     android:id="@+id/spinner_sort"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:dropDownWidth="match_parent" />
+                    android:dropDownWidth="match_parent"
+                    android:text="@string/action_sort"/>
         </androidx.appcompat.widget.Toolbar>
 
         <androidx.core.widget.NestedScrollView
@@ -35,6 +38,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/tv_url_display"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="52dp"
+                        android:text="Click search - your URL will show up here!"
+                        android:textSize="22sp" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rv_movies"

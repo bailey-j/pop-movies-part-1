@@ -25,16 +25,14 @@ public class NetworkUtils {
     final static String PARAM_QUERY = "api_key";
 
     final static String IMAGE_BASE_URL = "https://image.tmdb.org/t/p";
-
     final static String IMAGE_SIZE = "w185";
 
     /**
      * Builds one URL used to query TMDB.
      *
-     * @param sortValue The Toggle State.
      * @return The URL to use to query the TMDB server.
      */
-    public static URL buildPopUrl(String sortValue) {
+    public static URL buildPopUrl() {
         Uri builtUri = Uri.parse(TMDB_BASE_URL).buildUpon()
                 .appendPath(POP_URL)
                 .appendQueryParameter(PARAM_QUERY, API_KEY)
@@ -50,7 +48,7 @@ public class NetworkUtils {
     }
 
     //Building the Top Rated Movies URL QUERY
-    public static URL buildTopUrl(String sortValue) {
+    public static URL buildTopUrl() {
         Uri builtUri = Uri.parse(TMDB_BASE_URL).buildUpon()
                 .appendPath(TOP_URL)
                 .appendQueryParameter(PARAM_QUERY, API_KEY)

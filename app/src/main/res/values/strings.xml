@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Popular Movies v1</string>
     <string name="action_sort">Sort</string>
+    <string name="search">Search</string>
 
     <string-array name="api_query">
         <item>Most Popular</item>
